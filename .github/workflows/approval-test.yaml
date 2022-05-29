@@ -1,0 +1,25 @@
+name: 'Manual Approval'
+
+on:
+#   push:
+#     branches:
+#       - "main"
+  workflow_dispatch:
+
+jobs:
+
+  deploy-dev:
+    runs-on: 'ubuntu-latest'
+    environment: 'dev'
+    steps:
+      - name: Running in dev enviorment
+        run: |
+          echo [development]
+  deploy-prod:
+    needs: [deploy-dev]
+    runs-on: 'ubuntu-latest'
+    environment: 'prod'
+    steps:
+      - name: Running in prod enviorment
+        run: |
+          echo [production]
